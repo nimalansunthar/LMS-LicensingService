@@ -1,0 +1,28 @@
+
+server:  port: 8081
+
+
+spring:
+  application:
+    name: licenses-service       
+   
+  
+  cloud:
+    stream:
+      bindings:
+        inboundOrgChanges:
+          destination: orgchangetopic   
+          content-type: application/json
+          group: licensingGroup      
+                       
+eureka:  instance:    prefer-ip-address: true
+  client:    fetch-registry: true
+    register-with-eureka: true
+    service-url:      defaultzone: http://localhost:8761/eureka/
+      
+      
+logging:
+  level:    
+    com.netflix: error
+    org.springframework.web: error
+    com.lamin: debug
